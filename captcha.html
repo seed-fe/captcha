@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+</head>
+<body>
+    <input type="button" id="send" value="发送验证码">
+    <script type="text/javascript">
+        var send=document.getElementById('send'),
+            times=60;
+    window.onload=function(){
+            timer=null;
+            send.disabled = false;
+        send.onclick=function(){
+          // 计时开始 
+          this.disabled = 'disabled';
+          timer = setInterval(function(){
+              if(times <= 0){
+                  clearInterval(timer);
+                  timer = null;
+                  send.disabled = null;
+                  send.value = '发送验证码';
+                  times = 60;
+              } else {
+                times--;
+                send.value = times+'秒后重试';
+              }
+          },1000)
+        } 
+    }
+    </script>
+</body>
+</html>
