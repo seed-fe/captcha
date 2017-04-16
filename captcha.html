@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    
 </head>
 <body>
     <input type="button" id="send" value="发送验证码">
@@ -15,9 +14,12 @@
             send.disabled = false;
         send.onclick=function(){
           // 计时开始 
-          this.disabled = 'disabled';
+          this.disabled = 'disabled'; //先让按钮失效
+          // 直接从60开始计时
+          send.value = times+'秒后重试';
           timer = setInterval(function(){
-              if(times <= 0){
+              // 最后显示1s而不是0s
+              if(times <= 1){
                   clearInterval(timer);
                   timer = null;
                   send.disabled = null;
